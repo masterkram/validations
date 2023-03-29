@@ -26,8 +26,7 @@ dependencies:
 
   validations: ^0.8.3
   intl: ^0.15.0
-  intl_translation: # ^0.17.5
-    path: ../../../intl_translation
+  intl_translation: ^0.17.5
   flutter_localizations:
     sdk: flutter
 
@@ -37,13 +36,11 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
 
-
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
 
 # The following section is specific to Flutter.
 flutter:
-
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
   # the material Icons class.

@@ -1,9 +1,8 @@
 library validator;
 
 import 'dart:collection';
-
-import 'package:meta/meta.dart';
-
+import 'package:collection/collection.dart' show IterableExtension;
+import 'package:collection/collection.dart';
 part 'validator/class_constraint_validator.dart';
 part 'validator/class_validator.dart';
 part 'validator/constraint_validator.dart';

@@ -7,9 +7,9 @@ part of annotations.comparison;
 @Target({ElementType.FIELD})
 class Min extends GreaterThanOrEqual {
   const Min({
-    @required num value,
-    String message,
-    List<String> groups,
+    required num value,
+    String? message,
+    List<String>? groups,
   }) : super(
           value: value,
           message: message,

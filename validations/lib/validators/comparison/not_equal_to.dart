@@ -9,7 +9,7 @@ class NotEqualToValidator extends ConstraintValidator {
   final dynamic value;
 
   NotEqualToValidator({
-    @required this.value,
+    required this.value,
   })  : assert(value != null),
         super([value]);
 

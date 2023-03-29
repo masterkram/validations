@@ -4,7 +4,7 @@ part of validators.string;
 ///
 /// Supported types: [String]
 class ISBNValidator extends ConstraintValidator {
-  final int version;
+  final int? version;
 
   ISBNValidator({this.version}) : super([version]);
 

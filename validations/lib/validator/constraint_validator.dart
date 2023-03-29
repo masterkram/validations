@@ -30,7 +30,7 @@ abstract class ConstraintValidator<ValueType> {
   bool allowNull = true;
 
   ConstraintValidator([
-    List argumentValues,
+    List? argumentValues,
   ]) {
     if (argumentValues != null) {
       this.argumentValues = argumentValues;
@@ -44,7 +44,7 @@ abstract class ConstraintValidator<ValueType> {
     argumentValues = List.of(defaultArgumentValues);
   }
 
-  bool validate(ValueType value, [ValueContext context]) {
+  bool validate(ValueType value, [ValueContext? context]) {
     initialize();
 
     if (allowNull && value == null) {
@@ -62,7 +62,7 @@ abstract class ConstraintValidator<ValueType> {
       validator: null,
     );
 
-    final valid = isValid(value, context);
+    final valid = isValid(value, context)!;
 
     if (!valid) {
       if (this is! ClassConstraintValidator && message != null) {
@@ -75,11 +75,11 @@ abstract class ConstraintValidator<ValueType> {
             propertyPath: context.node?.path,
             invalidValue: value,
             // name: name,
-            name: context?.node?.name,
+            name: context.node?.name,
             message: Function.apply(
-              message,
+              message!,
               arguments,
-            ) as String,
+            ) as String?,
           ),
         );
       }
@@ -91,7 +91,7 @@ abstract class ConstraintValidator<ValueType> {
     return valid;
   }
 
-  bool isValid(ValueType value, ValueContext context);
+  bool? isValid(ValueType value, ValueContext context);
 
-  Function get message;
+  Function? get message;
 }

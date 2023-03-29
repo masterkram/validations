@@ -1,15 +1,15 @@
 part of validators.date;
 
 abstract class DateTimeBaseValidator extends ConstraintValidator {
-  final int year;
-  final int month;
-  final int day;
-  final int hour;
-  final int minute;
-  final int second;
-  final int millisecond;
-  final int microsecond;
-  DateTime date;
+  final int? year;
+  final int? month;
+  final int? day;
+  final int? hour;
+  final int? minute;
+  final int? second;
+  final int? millisecond;
+  final int? microsecond;
+  DateTime? date;
 
   DateTimeBaseValidator({
     this.year,
@@ -28,7 +28,7 @@ abstract class DateTimeBaseValidator extends ConstraintValidator {
       throw ArgumentError('Year is required');
     } else {
       date = DateTime(
-        year,
+        year!,
         month ?? 1,
         day ?? 1,
         hour ?? 0,
@@ -47,7 +47,7 @@ abstract class DateTimeBaseValidator extends ConstraintValidator {
       throw Exception('Invalid value');
     }
 
-    return _toAnnotatedPrecision(toDateTime(value)).compareTo(date);
+    return _toAnnotatedPrecision(toDateTime(value)).compareTo(date!);
   }
 
   DateTime _toAnnotatedPrecision(DateTime date) {

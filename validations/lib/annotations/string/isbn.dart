@@ -9,7 +9,7 @@ class ISBN extends ValidatorAnnotation {
   final String type;
   const ISBN({
     this.type = 'ISBN-13',
-    String message,
-    List<String> groups,
+    String? message,
+    List<String>? groups,
   }) : super(message, groups);
 }

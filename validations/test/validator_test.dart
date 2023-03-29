@@ -15,7 +15,7 @@ void printViolations(Set<ConstraintViolation> violations) {
 
 void main() {
   group('TestCarValidator', () {
-    TestCarValidator validator;
+    late TestCarValidator validator;
     setUp(() {
       validator = TestCarValidator();
     });

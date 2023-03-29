@@ -2,8 +2,9 @@ part of annotation;
 
 @immutable
 class _ErrorMessage {
-  final String message;
-  const _ErrorMessage([this.message]);
+  final String? message;
+
+  const _ErrorMessage({String? msg}) : message = msg;
 }
 
 /// Used to mark a [errorMessage] field in a class level annotation

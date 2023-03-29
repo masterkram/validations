@@ -9,10 +9,10 @@ part of annotations.string;
 @Constraint(validatedBy: UuidValidator)
 @Target({ElementType.FIELD})
 class Uuid extends ValidatorAnnotation {
-  final int version;
+  final int? version;
   const Uuid({
     this.version,
-    String message,
-    List<String> groups,
+    String? message,
+    List<String>? groups,
   }) : super(message, groups);
 }

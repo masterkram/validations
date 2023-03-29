@@ -39,26 +39,26 @@ enum ValidationMode {
 ///     class UserValidator extends Validator<User> with _$UserValidator {}
 ///
 abstract class Validator<T> {
-  Map<String, FieldValidator> _fieldValidatorMap;
-  ClassValidator _classValidator;
-  List<FieldValidator> _fieldValidators;
+  late Map<String?, FieldValidator?> _fieldValidatorMap;
+  ClassValidator? _classValidator;
+  late List<FieldValidator> _fieldValidators;
   List<FieldValidator> getFieldValidators() => [];
-  ClassValidator getClassValidator() => null;
-  PropertyMap<T> props(T props);
+  ClassValidator? getClassValidator() => null;
+  PropertyMap<T> props(T? props);
   ValidationContext validationContext = ValidationContext();
-  ValidationMode mode;
+  ValidationMode? mode;
 
   Validator() {
     _classValidator = getClassValidator();
     _fieldValidators = getFieldValidators();
     _fieldValidatorMap = Map.fromIterable(
       _fieldValidators,
-      key: (v) => v.name as String,
-      value: (v) => v as FieldValidator,
+      key: (v) => v.name as String?,
+      value: (v) => v as FieldValidator?,
     );
   }
 
-  Set<ConstraintViolation> validate(T object, [ValueContext context]) {
+  Set<ConstraintViolation> validate(T object, [ValueContext? context]) {
     context ??= _createRootValueContext(object);
 
     mode = ValidationMode.full;
@@ -90,7 +90,7 @@ abstract class Validator<T> {
   ///
   /// Otherwise returns null.
   ///
-  String errorCheck(String name, Object value) {
+  String? errorCheck(String name, Object value) {
     final context = _createRootValueContext(null);
 
     final violations =
@@ -113,7 +113,7 @@ abstract class Validator<T> {
   ///
   /// Otherwise returns null.
   ///
-  String crossErrorCheck(T object, String name, Object value) {
+  String? crossErrorCheck(T object, String name, Object value) {
     final properties = props(object).add(name, value);
 
     final context = _createRootValueContext(object);
@@ -130,7 +130,7 @@ abstract class Validator<T> {
 
   Set<ConstraintViolation> _validate(
     PropertyMap<T> props,
-    ValueContext context,
+    ValueContext? context,
   ) {
     final violations = <ConstraintViolation>{};
 
@@ -145,9 +145,9 @@ abstract class Validator<T> {
 
     if (_classValidator != null) {
       final classViolations = _applyValidators(
-        _classValidator.getType(),
+        _classValidator!.getType(),
         props,
-        _classValidator.validators,
+        _classValidator!.validators!,
         props,
         context,
       );
@@ -162,15 +162,15 @@ abstract class Validator<T> {
 
   Set<ConstraintViolation> _validateProperty(
     PropertyMap<T> properties,
-    String name,
-    ValueContext context,
+    String? name,
+    ValueContext? context,
   ) {
     if (properties.containsKey(name)) {
       final propertyValue = properties[name];
 
       final valueNode = Node(name: name);
 
-      context.node.append(valueNode);
+      context!.node!.append(valueNode);
 
       final valueContext = ValueContext(
         node: valueNode,
@@ -192,48 +192,48 @@ abstract class Validator<T> {
   }
 
   Set<ConstraintViolation> _validateValue(
-    String name,
-    Object value,
-    PropertyMap<T> properties,
+    String? name,
+    Object? value,
+    PropertyMap<T>? properties,
     ValueContext valueContext,
   ) {
     if (!_fieldValidatorMap.containsKey(name)) {
       throw Exception('No validator found for `$name`');
     }
 
-    final fieldValidator = _fieldValidatorMap[name];
+    final fieldValidator = _fieldValidatorMap[name]!;
     final violations = <ConstraintViolation>{};
 
     if (fieldValidator.validateClass && mode != ValidationMode.full) {
-      final props = this.props(valueContext.validatedObject as T);
+      final PropertyMap<T> props = this.props(valueContext.validatedObject as T?);
 
       final validators =
-          List<ClassConstraintValidator>.from(_classValidator.validators)
+          List<ClassConstraintValidator>.from(_classValidator!.validators!)
             ..retainWhere((validator) {
               return validator.affectedFields.contains(name);
             });
 
       // Populate baseNode with it's children as we are not in full mode.
-      for (var propertyName in properties.keys) {
+      for (var propertyName in properties!.keys) {
         final valueNode = Node(name: propertyName);
 
-        valueContext.baseNode.append(valueNode);
+        valueContext.baseNode!.append(valueNode);
       }
 
       final classViolations = _applyValidators(
-        _classValidator.getType(),
+        _classValidator!.getType(),
         props,
         validators,
         props,
         valueContext,
       )..retainWhere(
           // Filter out the model level violation message (if any)
-          (violation) => violation.propertyPath == valueContext.node.path);
+          (violation) => violation.propertyPath == valueContext.node!.path);
 
       violations.addAll(classViolations);
     }
 
-    final validators = fieldValidator.validators;
+    final validators = fieldValidator.validators!;
 
     violations.addAll(
       _applyValidators(
@@ -249,11 +249,11 @@ abstract class Validator<T> {
   }
 
   Set<ConstraintViolation> _applyValidators(
-    String name,
-    Object value,
+    String? name,
+    Object? value,
     List<ConstraintValidator> validators,
     validatedObject,
-    ValueContext valueContext,
+    ValueContext? valueContext,
   ) {
     final violations = <ConstraintViolation>{};
 
@@ -261,7 +261,7 @@ abstract class Validator<T> {
       if (validator.allowNull && value == null) continue;
 
       if (!validator.validate(value, valueContext)) {
-        if (valueContext.violations.isEmpty) {
+        if (valueContext!.violations.isEmpty) {
           throw Exception(
             'Validation failed but the violations list is empty for ${validator.runtimeType}.',
           );
@@ -289,7 +289,7 @@ abstract class Validator<T> {
     return violations;
   }
 
-  ValueContext _createRootValueContext(Object value) {
+  ValueContext _createRootValueContext(Object? value) {
     final baseNode = Node(
       name: value.runtimeType.toString(),
     );

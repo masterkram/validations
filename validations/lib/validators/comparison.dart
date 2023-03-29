@@ -1,7 +1,6 @@
 library validators.comparison;
 
 import 'package:decimal/decimal.dart';
-import 'package:meta/meta.dart';
 
 import '../validator.dart';
 

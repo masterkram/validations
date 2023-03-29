@@ -5,7 +5,7 @@ part of annotations.date;
 @Constraint(validatedBy: AfterValidator)
 @Target({ElementType.FIELD})
 class After extends ValidatorAnnotation {
-  final int year;
+  final int? year;
   final int month;
   final int day;
   final int hour;
@@ -22,7 +22,7 @@ class After extends ValidatorAnnotation {
     this.second = 0,
     this.millisecond = 0,
     this.microsecond = 0,
-    String message,
-    List<String> groups,
+    String? message,
+    List<String>? groups,
   }) : super(message, groups);
 }

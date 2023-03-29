@@ -126,7 +126,7 @@ class ValidatedElement {
     ElementType elementType,
   ) {
     final fieldAnnotation = ElementValidationAnnotation(
-      type: constantValue.type.displayName,
+      type: constantValue.type.getDisplayString(withNullability: true),
     )..isContainerAnnotation =
         containerAnnotationType.isAssignableFromType(constantValue.type);
 
@@ -181,7 +181,7 @@ class ValidatedElement {
         fieldAnnotation.parameters.add(
           AnnotationParameter(
             name: parameter.name,
-            type: parameter.type.displayName,
+            type: parameter.type.getDisplayString(withNullability: true),
             value: param.literalValue,
             isNull: param.isNull,
           ),
@@ -210,7 +210,7 @@ class ValidatedElement {
     }
 
     final validatedBy =
-        constraintAnnotation.constantValue.getField('validatedBy');
+        constraintAnnotation.computeConstantValue().getField('validatedBy');
 
     if (validatedBy == null) {
       throw Exception(

@@ -9,7 +9,7 @@ class NotIdenticalToValidator extends ConstraintValidator {
   final dynamic value;
 
   NotIdenticalToValidator({
-    @required this.value,
+    required this.value,
   })  : assert(value != null),
         super([value]);
 

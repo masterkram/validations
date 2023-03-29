@@ -12,10 +12,10 @@ class Digits extends ValidatorAnnotation {
   /// maximum number of fractional digits accepted for this number
   final int fraction;
   Digits({
-    this.integer,
-    this.fraction,
-    String message,
-    List<String> groups,
+    required this.integer,
+    required this.fraction,
+    String? message,
+    List<String>? groups,
   }) : super(message, groups) {
     if (integer.isNegative) {
       throw ArgumentError('Integer cannot be negative');

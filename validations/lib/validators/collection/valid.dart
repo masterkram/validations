@@ -14,7 +14,7 @@ class ValidValidator extends ConstraintValidatorContainer {
     if (value is List) {
       var valid = true;
 
-      for (Object object in value) {
+      for (Object object in value as Iterable<Object>) {
         // should create new value context here. including the index, name = index.
         final result = _validateObject(object, context);
 

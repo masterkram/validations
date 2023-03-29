@@ -6,7 +6,7 @@ part of annotations.string;
 @Target({ElementType.FIELD})
 class MongoId extends ValidatorAnnotation {
   const MongoId({
-    String message,
-    List<String> groups,
+    String? message,
+    List<String>? groups,
   }) : super(message, groups);
 }

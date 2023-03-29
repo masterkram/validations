@@ -6,7 +6,7 @@ part of annotations.basic;
 @Target({ElementType.FIELD})
 class IsTrue extends ValidatorAnnotation {
   const IsTrue({
-    String message,
-    List<String> groups,
+    String? message,
+    List<String>? groups,
   }) : super(message, groups);
 }

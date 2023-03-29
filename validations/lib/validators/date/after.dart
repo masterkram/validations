@@ -7,14 +7,14 @@ part of validators.date;
 /// Supported types: [DateTime], [String]
 class AfterValidator extends DateTimeBaseValidator {
   AfterValidator({
-    @required int year,
-    int month,
-    int day,
-    int hour,
-    int minute,
-    int second,
-    int millisecond,
-    int microsecond,
+    required int year,
+    int? month,
+    int? day,
+    int? hour,
+    int? minute,
+    int? second,
+    int? millisecond,
+    int? microsecond,
   }) : super(
           year: year,
           month: month,
@@ -31,7 +31,7 @@ class AfterValidator extends DateTimeBaseValidator {
   }
 
   @override
-  bool isValid(Object value, ValueContext context) {
+  bool isValid(dynamic value, ValueContext context) {
     try {
       return compare(value) > 0;
     } catch (_) {

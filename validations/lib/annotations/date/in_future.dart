@@ -5,10 +5,10 @@ part of annotations.date;
 @Constraint(validatedBy: InFutureValidator)
 @Target({ElementType.FIELD})
 class InFuture extends ValidatorAnnotation {
-  final Object timeUnit;
+  final Object? timeUnit;
   const InFuture({
     this.timeUnit,
-    String message,
-    List<String> groups,
+    String? message,
+    List<String>? groups,
   }) : super(message, groups);
 }

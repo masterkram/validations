@@ -7,13 +7,13 @@ part of annotations.comparison;
 @Constraint(validatedBy: DurationMinValidator)
 @Target({ElementType.FIELD})
 class DurationMin extends ValidatorAnnotation {
-  final int days;
-  final int hours;
-  final int minutes;
-  final int seconds;
-  final int milliseconds;
-  final int microseconds;
-  final bool inclusive;
+  final int? days;
+  final int? hours;
+  final int? minutes;
+  final int? seconds;
+  final int? milliseconds;
+  final int? microseconds;
+  final bool? inclusive;
   const DurationMin({
     this.days,
     this.hours,
@@ -22,7 +22,7 @@ class DurationMin extends ValidatorAnnotation {
     this.milliseconds,
     this.microseconds,
     this.inclusive,
-    String message,
-    List<String> groups,
+    String? message,
+    List<String>? groups,
   }) : super(message, groups);
 }

@@ -9,7 +9,7 @@ class DecimalMinValidator extends ConstraintValidator {
   final bool inclusive;
 
   DecimalMinValidator({
-    @required this.value,
+    required this.value,
     this.inclusive = false,
   })  : assert(value != null),
         super([value, inclusive]);

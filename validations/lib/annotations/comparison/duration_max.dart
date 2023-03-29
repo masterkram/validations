@@ -14,7 +14,7 @@ class DurationMax extends ValidatorAnnotation {
   final int seconds;
   final int milliseconds;
   final int microseconds;
-  final bool inclusive;
+  final bool? inclusive;
 
   const DurationMax({
     this.days = 0,
@@ -24,7 +24,7 @@ class DurationMax extends ValidatorAnnotation {
     this.milliseconds = 0,
     this.microseconds = 0,
     this.inclusive,
-    String message,
-    List<String> groups,
+    String? message,
+    List<String>? groups,
   }) : super(message, groups);
 }

@@ -2,14 +2,14 @@ part of validator;
 
 // https://github.com/sebthom/oval/blob/master/src/main/java/net/sf/oval/ConstraintViolation.java
 class ConstraintViolation<T> {
-  String message;
-  Object validatedObject;
-  Object invalidValue;
-  String name;
-  T rootModel;
-  Type rootModelType;
-  String propertyPath;
-  List parameters;
+  String? message;
+  Object? validatedObject;
+  Object? invalidValue;
+  String? name;
+  T? rootModel;
+  Type? rootModelType;
+  String? propertyPath;
+  List? parameters;
 
   ConstraintViolation({
     this.name,

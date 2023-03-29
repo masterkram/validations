@@ -6,7 +6,7 @@ part of annotations.basic;
 @Target({ElementType.FIELD})
 class NotNull extends ValidatorAnnotation {
   const NotNull({
-    String message,
-    List<String> groups,
+    String? message,
+    List<String>? groups,
   }) : super(message, groups);
 }

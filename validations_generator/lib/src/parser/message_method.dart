@@ -1,3 +1,4 @@
+import 'package:analyzer/dart/analysis/results.dart';
 import 'package:analyzer/dart/element/element.dart';
 import 'package:code_builder/code_builder.dart';
 
@@ -51,7 +52,8 @@ class MessageMethod {
       );
     }
     final resolvedLibrary = await defaultMessageMethod.library.session
-        .getResolvedLibraryByElement(defaultMessageMethod.library);
+            .getResolvedLibraryByElement(defaultMessageMethod.library)
+        as ResolvedLibraryResult;
 
     final fieldDeclaration =
         resolvedLibrary.getElementDeclaration(defaultMessageMethod);

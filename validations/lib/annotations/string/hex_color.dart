@@ -6,7 +6,7 @@ part of annotations.string;
 @Target({ElementType.FIELD})
 class HexColor extends ValidatorAnnotation {
   const HexColor({
-    String message,
-    List<String> groups,
+    String? message,
+    List<String>? groups,
   }) : super(message, groups);
 }

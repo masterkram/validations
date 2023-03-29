@@ -5,12 +5,12 @@ part of annotations.mixed;
 @Constraint(validatedBy: SizeValidator)
 @Target({ElementType.FIELD})
 class Size extends ValidatorAnnotation {
-  final int min;
-  final int max;
+  final int? min;
+  final int? max;
   const Size({
     this.min,
     this.max,
-    String message,
-    List<String> groups,
+    String? message,
+    List<String>? groups,
   }) : super(message, groups);
 }

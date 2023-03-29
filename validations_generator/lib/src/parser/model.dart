@@ -151,7 +151,7 @@ class ModelParser {
           element: propertyField.type.element as ClassElement,
           modelClass: model.element as ClassElement,
           elementType: ElementType.FIELD,
-          type: propertyField.type.displayName,
+          type: propertyField.type.getDisplayString(withNullability: true),
           library: library,
         )..parseElementsProperties(annotations);
 
@@ -199,7 +199,7 @@ class ModelParser {
           element: field.type.element as ClassElement,
           elementType: ElementType.FIELD,
           modelClass: model.element as ClassElement,
-          type: field.type.displayName,
+          type: field.type.getDisplayString(withNullability: true),
           library: library,
         )..parseFieldAnnotations(field);
 
@@ -410,7 +410,7 @@ class ModelParser {
       final containerValidator = _getValidatorForModel(classElement);
 
       final str = refer(
-          '${containerValidator.type.displayName}()..validationContext = validationContext,');
+          '${containerValidator.getDisplayString(withNullability: true)}()..validationContext = validationContext,');
 
       positionalArguments.add(str);
     }
@@ -660,7 +660,7 @@ class ModelParser {
 
   /// Find the model associated with this validator.
   void _findModel() {
-    if (!validatorType.isAssignableFromType(generatorClass.type)) {
+    if (!validatorType.isAssignableFromType(generatorClass.thisType)) {
       throw Exception('Validators must implement Validator interface!');
     }
 

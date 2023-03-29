@@ -5,9 +5,9 @@ part of validators.string;
 /// Supported types: [String]
 class ByteLengthValidator extends ConstraintValidator {
   final int min;
-  final int max;
+  final int? max;
   ByteLengthValidator({
-    @required this.min,
+    required this.min,
     this.max,
   })  : assert(min != null),
         super([min, max]);

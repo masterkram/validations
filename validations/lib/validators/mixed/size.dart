@@ -8,8 +8,8 @@ class SizeValidator extends ConstraintValidator {
   final int min;
 
   SizeValidator({
-    @required this.min,
-    @required this.max,
+    required this.min,
+    required this.max,
   })  : assert(min != null),
         assert(max != null),
         super([min, max]);

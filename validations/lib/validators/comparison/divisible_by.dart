@@ -7,7 +7,7 @@ class DivisibleByValidator extends ConstraintValidator {
   final num value;
 
   DivisibleByValidator({
-    @required this.value,
+    required this.value,
   })  : assert(value != null),
         super([value]);
 

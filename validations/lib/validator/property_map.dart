@@ -20,7 +20,7 @@ class PropertyMap<ValueType> extends UnmodifiableMapBase<String, dynamic> {
   Iterable<String> get keys => _source.keys;
 
   @override
-  dynamic operator [](Object key) => _source[key];
+  dynamic operator [](Object? key) => _source[key];
 
   PropertyMap<ValueType> add(String name, Object value) {
     final result = <String, dynamic>{};

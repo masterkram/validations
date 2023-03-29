@@ -7,8 +7,8 @@ part of annotations.comparison;
 class LessThan extends ValidatorAnnotation {
   final num value;
   const LessThan({
-    @required this.value,
-    String message,
-    List<String> groups,
+    required this.value,
+    String? message,
+    List<String>? groups,
   }) : super(message, groups);
 }

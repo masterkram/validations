@@ -19,12 +19,12 @@ part of validators.date;
 /// Supported types: [DateTime], [String]
 class PastOrPresentValidator extends TimeUnitBaseValidator {
   PastOrPresentValidator({
-    Object timeUnit,
+    Object? timeUnit,
   }) : super(timeUnit: timeUnit);
 
   @override
   bool isValid(dynamic value, ValueContext context) {
-    return _isBefore(timeUnit, date, toDateTime(value), true);
+    return _isBefore(timeUnit, date!, toDateTime(value), true);
   }
 
   @override

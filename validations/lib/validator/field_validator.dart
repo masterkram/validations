@@ -1,8 +1,8 @@
 part of validator;
 
 class FieldValidator<T> {
-  final String name;
-  final List<ConstraintValidator> validators;
+  final String? name;
+  final List<ConstraintValidator>? validators;
   final bool validateClass;
   const FieldValidator({
     this.name,

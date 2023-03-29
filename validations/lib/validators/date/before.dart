@@ -7,14 +7,14 @@ part of validators.date;
 /// Supported types: [DateTime], [String]
 class BeforeValidator extends DateTimeBaseValidator {
   BeforeValidator({
-    @required int year,
-    int month,
-    int day,
-    int hour,
-    int minute,
-    int second,
-    int millisecond,
-    int microsecond,
+    required int year,
+    int? month,
+    int? day,
+    int? hour,
+    int? minute,
+    int? second,
+    int? millisecond,
+    int? microsecond,
   }) : super(
           year: year,
           month: month,

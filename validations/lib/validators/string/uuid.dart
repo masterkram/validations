@@ -5,7 +5,7 @@ part of validators.string;
 /// Supported types: [String]
 class UuidValidator extends ConstraintValidator {
   // UUID version (3, 4, or 5)
-  final int version;
+  final int? version;
 
   UuidValidator({this.version}) : super([version]);
 

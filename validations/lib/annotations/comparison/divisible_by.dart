@@ -7,8 +7,8 @@ part of annotations.comparison;
 class DivisibleBy extends ValidatorAnnotation {
   final Object value;
   const DivisibleBy({
-    @required this.value,
-    String message,
-    List<String> groups,
+    required this.value,
+    String? message,
+    List<String>? groups,
   }) : super(message, groups);
 }

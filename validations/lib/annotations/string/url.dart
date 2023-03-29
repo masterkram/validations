@@ -9,17 +9,17 @@ part of annotations.string;
 @Constraint(validatedBy: UrlValidator)
 @Target({ElementType.FIELD})
 class URL extends ValidatorAnnotation {
-  final String protocol;
-  final String host;
-  final int port;
-  final String regexp;
+  final String? protocol;
+  final String? host;
+  final int? port;
+  final String? regexp;
 
   const URL({
     this.protocol,
     this.host,
     this.port,
     this.regexp,
-    String message,
-    List<String> groups,
+    String? message,
+    List<String>? groups,
   }) : super(message, groups);
 }

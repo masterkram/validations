@@ -5,23 +5,23 @@ part of annotations.class_level;
 @Target({ElementType.CLASS})
 class FieldMatch extends ValidatorAnnotation {
   @property
-  final String baseField;
+  final String? baseField;
 
   @property
-  final String matchField;
+  final String? matchField;
 
   @errorMessage
-  final String baseFieldMessage;
+  final String? baseFieldMessage;
 
   @errorMessage
-  final String matchFieldMessage;
+  final String? matchFieldMessage;
 
   const FieldMatch({
     this.baseField,
     this.matchField,
     this.baseFieldMessage,
     this.matchFieldMessage,
-    String message,
-    List<String> groups,
+    String? message,
+    List<String>? groups,
   }) : super(message, groups);
 }

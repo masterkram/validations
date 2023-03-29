@@ -8,8 +8,8 @@ class NotEqualTo extends ValidatorAnnotation {
   final Object value;
 
   const NotEqualTo({
-    @required this.value,
-    String message,
-    List<String> groups,
+    required this.value,
+    String? message,
+    List<String>? groups,
   }) : super(message, groups);
 }

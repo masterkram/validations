@@ -8,7 +8,7 @@ part of annotations.collection;
 @Target({ElementType.FIELD})
 class Valid extends ContainerAnnotation {
   const Valid({
-    String message,
-    List<String> groups,
+    String? message,
+    List<String>? groups,
   }) : super(message, groups);
 }

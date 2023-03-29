@@ -6,12 +6,12 @@ part of annotations.comparison;
 @Constraint(validatedBy: RangeValidator)
 @Target({ElementType.FIELD})
 class Range extends ValidatorAnnotation {
-  final num min;
-  final num max;
+  final num? min;
+  final num? max;
   const Range({
     this.min,
     this.max,
-    String message,
-    List<String> groups,
+    String? message,
+    List<String>? groups,
   }) : super(message, groups);
 }

@@ -5,10 +5,10 @@ part of annotations.date;
 @Constraint(validatedBy: PastOrPresentValidator)
 @Target({ElementType.FIELD})
 class PastOrPresent extends ValidatorAnnotation {
-  final Object timeUnit;
+  final Object? timeUnit;
   const PastOrPresent({
     this.timeUnit,
-    String message,
-    List<String> groups,
+    String? message,
+    List<String>? groups,
   }) : super(message, groups);
 }

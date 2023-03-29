@@ -5,12 +5,12 @@ part of validators.string;
 /// Supported types: [String]
 class IpValidator extends ConstraintValidator {
   // Protocol version [4 or 6]
-  final int version;
+  final int? version;
   IpValidator({
     this.version,
   }) : super([version]);
   @override
-  bool isValid(Object value, ValueContext context) {
+  bool isValid(dynamic value, ValueContext context) {
     return value is String && isIP(value, version);
   }
 

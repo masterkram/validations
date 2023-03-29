@@ -7,7 +7,7 @@ part of validators.comparison;
 /// Note: this validator is identical to the [LessThanOrEqualValidator]
 class MaxValidator extends LessThanOrEqualValidator {
   MaxValidator({
-    @required num value,
+    required num value,
   })  : assert(value != null),
         super(value: value);
 

@@ -4,6 +4,6 @@ part of annotation;
 class Constraint {
   final Type validatedBy;
   const Constraint({
-    @required this.validatedBy,
+    required this.validatedBy,
   }) : assert(validatedBy != null);
 }

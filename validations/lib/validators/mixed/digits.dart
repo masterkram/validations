@@ -11,7 +11,7 @@ class DigitsValidator extends ConstraintValidator {
   final int fraction;
 
   DigitsValidator({
-    @required this.integer,
+    required this.integer,
     this.fraction = 0,
   }) : super([integer, fraction]) {
     if (integer == null) {

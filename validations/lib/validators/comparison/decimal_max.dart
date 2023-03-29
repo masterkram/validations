@@ -9,7 +9,7 @@ class DecimalMaxValidator extends ConstraintValidator {
   final bool inclusive;
 
   DecimalMaxValidator({
-    @required this.value,
+    required this.value,
     this.inclusive = false,
   })  : assert(value != null),
         super([value, inclusive]);

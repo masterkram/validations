@@ -5,7 +5,7 @@ part of validators.comparison;
 ///
 /// Supported types: [Duration]
 class DurationMaxValidator extends ConstraintValidator {
-  Duration duration;
+  Duration? duration;
   final int days;
   final int hours;
   final int minutes;
@@ -41,7 +41,7 @@ class DurationMaxValidator extends ConstraintValidator {
   @override
   bool isValid(dynamic value, ValueContext context) {
     if (value is Duration) {
-      final result = value.compareTo(duration);
+      final result = value.compareTo(duration!);
 
       if (inclusive) {
         return result <= 0;

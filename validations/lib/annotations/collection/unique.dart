@@ -10,7 +10,7 @@ part of annotations.collection;
 @Target({ElementType.FIELD})
 class Unique extends ValidatorAnnotation {
   const Unique({
-    String message,
-    List<String> groups,
+    String? message,
+    List<String>? groups,
   }) : super(message, groups);
 }

@@ -7,14 +7,14 @@ class GreaterThanValidator extends ConstraintValidator {
   final dynamic value;
 
   GreaterThanValidator({
-    @required this.value,
+    required this.value,
   })  : assert(value != null),
         super([value]);
 
   @override
-  bool isValid(dynamic value, ValueContext context) {
+  bool? isValid(dynamic value, ValueContext context) {
     try {
-      return value > this.value as bool;
+      return value > this.value as bool?;
     } catch (_) {
       return false;
     }

@@ -9,7 +9,7 @@ class EqualToValidator extends ConstraintValidator {
   final dynamic value;
 
   EqualToValidator({
-    @required this.value,
+    required this.value,
   })  : assert(value != null),
         super([value]);
 

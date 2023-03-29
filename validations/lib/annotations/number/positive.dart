@@ -7,7 +7,7 @@ part of annotations.number;
 @Target({ElementType.FIELD})
 class Positive extends ValidatorAnnotation {
   const Positive({
-    String message,
-    List<String> groups,
+    String? message,
+    List<String>? groups,
   }) : super(message, groups);
 }

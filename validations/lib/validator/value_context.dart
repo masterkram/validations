@@ -4,18 +4,18 @@ class ValueContext {
   // The current node.
   // Use node.propertyPath to get the property path
   // from the root to this node.
-  final Node node;
+  final Node? node;
 
   // The currently validated value.
-  final Object value;
+  final Object? value;
 
   // The currently validated object.
-  final Object validatedObject;
+  final Object? validatedObject;
 
   // The current validator, either the root validator.
   // Or if @Valid is used the validator of the currently
   // validated [Type]
-  final Validator validator;
+  final Validator? validator;
 
   // The violations for the current context.
   final List<ConstraintViolation> violations = [];
@@ -45,14 +45,14 @@ class ValueContext {
   /// This is mostly used in class level validators to correctly
   /// point to the fields being validated and attach violations to
   /// those specific field.
-  final Node baseNode;
+  final Node? baseNode;
 
   ValueContext({
-    @required this.node,
-    @required this.baseNode,
-    @required this.value,
-    @required this.validatedObject,
-    @required this.validator,
+    required this.node,
+    required this.baseNode,
+    required this.value,
+    required this.validatedObject,
+    required this.validator,
   });
 
   /// Adds a violation to the current context.
@@ -66,14 +66,14 @@ class ValueContext {
   /// to a certain field.
   ///
   /// This is mainly used in class level validators.
-  void addViolation(Function message, List parameters, [Node node]) {
+  void addViolation(Function message, List parameters, [Node? node]) {
     violations.add(buildViolation(message, parameters, node));
   }
 
   ConstraintViolation buildViolation(
     Function message,
     List parameters,
-    Node node,
+    Node? node,
   ) {
     node ??= this.node;
 
@@ -83,15 +83,15 @@ class ValueContext {
       invalidValue: value,
       parameters: parameters,
       // TODO: Check this, it should be the property or the class name.
-      name: node.name,
+      name: node!.name,
       message: Function.apply(
         message,
         parameters,
-      ) as String,
+      ) as String?,
     );
   }
 
-  Node getNode(String path) {
-    return baseNode.findNode(path);
+  Node? getNode(String path) {
+    return baseNode!.findNode(path);
   }
 }

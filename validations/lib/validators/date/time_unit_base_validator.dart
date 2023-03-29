@@ -12,11 +12,11 @@ const timeUnits = [
 ];
 
 abstract class TimeUnitBaseValidator extends ConstraintValidator {
-  DateTime date;
-  TimeUnit timeUnit;
+  DateTime? date;
+  TimeUnit? timeUnit;
 
   TimeUnitBaseValidator({
-    Object timeUnit,
+    Object? timeUnit,
   }) : super([]) {
     setTimeUnit(timeUnit);
 
@@ -34,7 +34,7 @@ abstract class TimeUnitBaseValidator extends ConstraintValidator {
   /// Will return true if [other] date is earlier and in case
   /// [inclusive] is set equal to the [date] based on the given time unit.
   bool _isBefore(
-    TimeUnit timeUnit,
+    TimeUnit? timeUnit,
     DateTime date,
     DateTime other,
     bool inclusive,
@@ -45,7 +45,7 @@ abstract class TimeUnitBaseValidator extends ConstraintValidator {
   /// Will return true if [other] date is later and in case
   /// [inclusive] is set equal to the [date] based on the given time unit.
   bool _isAfter(
-    TimeUnit timeUnit,
+    TimeUnit? timeUnit,
     DateTime date,
     DateTime other,
     bool inclusive,
@@ -61,14 +61,14 @@ abstract class TimeUnitBaseValidator extends ConstraintValidator {
     for (var unit in timeUnits) {
       if (unit == timeUnitString) {
         if (inclusive) {
-          result = otherMap[unit] >= dateMap[unit];
+          result = otherMap[unit]! >= dateMap[unit]!;
         } else {
-          result = otherMap[unit] > dateMap[unit];
+          result = otherMap[unit]! > dateMap[unit]!;
         }
         break;
       }
 
-      if (otherMap[unit] < dateMap[unit]) {
+      if (otherMap[unit]! < dateMap[unit]!) {
         break;
       }
     }
@@ -103,15 +103,15 @@ abstract class TimeUnitBaseValidator extends ConstraintValidator {
     return enumItem.toString().split('.')[1];
   }
 
-  List<String> enumToString(value) {
-    return (value as dynamic).values.map(enumItemToString) as List<String>;
+  List<String>? enumToString(value) {
+    return (value as dynamic).values.map(enumItemToString) as List<String>?;
   }
 
   void setTimeUnit(value) {
     if (value is String) {
-      timeUnit = TimeUnit.values.firstWhere((enumItem) {
+      timeUnit = TimeUnit.values.firstWhereOrNull((enumItem) {
         return enumItemToString(enumItem) == value;
-      }, orElse: () => null);
+      });
     } else if (value is TimeUnit) {
       timeUnit = value;
     }

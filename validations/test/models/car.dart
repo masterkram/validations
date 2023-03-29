@@ -1,13 +1,10 @@
 import 'package:decimal/decimal.dart';
-import 'package:intl/intl.dart';
 import 'package:validations/validations.dart';
-
-part 'car.g.dart';
 
 class Driver {
   Driver({this.name});
   @NotNull()
-  String name;
+  String? name;
 }
 
 // TODO extents
@@ -27,10 +24,10 @@ class CarWithMixin extends Car with ValidatorMixin<TestCarValidator> {}
 )
 class Car {
   @NotNull()
-  String manufacturer;
+  String? manufacturer;
 
   @Valid(message: 'There should be a valid driver!')
-  Driver driver;
+  Driver? driver;
 
   @Size(
     min: 2,
@@ -39,7 +36,7 @@ class Car {
         r'The license plate $validatedValue must be between $min and $max characters long',
   )
   @NotNull()
-  String licensePlate;
+  String? licensePlate;
 
   @Min(
     value: 1,
@@ -49,28 +46,28 @@ class Car {
     value: 2,
     message: r'Car cannot have more than $value seats',
   )
-  int seatCount;
+  int? seatCount;
 
   @Max(
     value: 350,
     message: r'The top speed $validatedValue is higher than $value',
   )
-  int topSpeed;
+  int? topSpeed;
 
   @NotEmpty()
-  String frontWheelCoverLeft;
+  String? frontWheelCoverLeft;
   @NotEmpty()
-  String frontWheelCoverRight;
+  String? frontWheelCoverRight;
   @NotEmpty()
-  String rearWheelCoverLeft;
+  String? rearWheelCoverLeft;
   @NotEmpty()
-  String rearWheelCoverRight;
-
-  // Validations are declared in GenValidator
-  Decimal price;
+  String? rearWheelCoverRight;
 
   // Validations are declared in GenValidator
-  bool isRegistered;
+  Decimal? price;
+
+  // Validations are declared in GenValidator
+  bool? isRegistered;
 }
 
 @GenValidator(
@@ -93,5 +90,5 @@ class Car {
 class TestCarValidator extends Validator<Car> with _$TestCarValidator {}
 
 @GenValidator()
-class TestDriverValidator extends Validator<Driver> with _$TestDriverValidator {
-}
+class TestDriverValidator extends Validator<Driver>
+    with _$TestDriverValidator {}

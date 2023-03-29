@@ -6,7 +6,7 @@ part of annotations.string;
 @Target({ElementType.FIELD})
 class Alpha extends ValidatorAnnotation {
   const Alpha({
-    String message,
-    List<String> groups,
+    String? message,
+    List<String>? groups,
   }) : super(message, groups);
 }

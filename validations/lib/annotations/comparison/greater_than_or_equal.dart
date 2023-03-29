@@ -8,8 +8,8 @@ part of annotations.comparison;
 class GreaterThanOrEqual extends ValidatorAnnotation {
   final num value;
   const GreaterThanOrEqual({
-    @required this.value,
-    String message,
-    List<String> groups,
+    required this.value,
+    String? message,
+    List<String>? groups,
   }) : super(message, groups);
 }

@@ -19,12 +19,12 @@ part of validators.date;
 /// Supported types: [DateTime], [String]
 class InFutureValidator extends TimeUnitBaseValidator {
   InFutureValidator({
-    Object timeUnit,
+    Object? timeUnit,
   }) : super(timeUnit: timeUnit);
 
   @override
   bool isValid(dynamic value, ValueContext context) {
-    return _isAfter(timeUnit, date, toDateTime(value), false);
+    return _isAfter(timeUnit, date!, toDateTime(value), false);
   }
 
   @override

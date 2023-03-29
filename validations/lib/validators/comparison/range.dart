@@ -8,8 +8,8 @@ class RangeValidator extends ConstraintValidator {
   final num max;
 
   RangeValidator({
-    @required this.min,
-    @required this.max,
+    required this.min,
+    required this.max,
   })  : assert(min != null),
         assert(max != null),
         super([min, max]);

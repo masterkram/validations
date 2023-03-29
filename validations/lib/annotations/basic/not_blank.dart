@@ -7,7 +7,7 @@ part of annotations.basic;
 @Target({ElementType.FIELD})
 class NotBlank extends ValidatorAnnotation {
   const NotBlank({
-    String message,
-    List<String> groups,
+    String? message,
+    List<String>? groups,
   }) : super(message, groups);
 }

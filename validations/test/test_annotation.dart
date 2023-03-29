@@ -4,7 +4,7 @@ import 'package:test/test.dart';
 import 'package:validations/annotation.dart';
 
 dynamic _getInstance(Type annotationType,
-    [Map<Symbol, dynamic> namedArguments]) {
+    [Map<Symbol, dynamic> namedArguments = const {}]) {
   final classMirror = reflectClass(annotationType);
 
   return classMirror
@@ -17,9 +17,9 @@ dynamic _getInstance(Type annotationType,
 }
 
 class TestAnnotation {
-  TestAnnotation(Type annotationType, Map<Symbol, dynamic> namedArguments) {
+  TestAnnotation(Type? annotationType, Map<Symbol, dynamic> namedArguments) {
     test(annotationType.toString(), () {
-      final instance = _getInstance(annotationType, namedArguments);
+      final instance = _getInstance(annotationType!, namedArguments);
       expect(instance, isA<ValidatorAnnotation>());
     });
   }
@@ -33,7 +33,7 @@ void testAnnotations(
   group(description, () {
     for (var annotation in annotations) {
       if (!annotation.toString().startsWith('Instance of')) {
-        TestAnnotation(annotation as Type, namedArguments);
+        TestAnnotation(annotation as Type?, namedArguments);
       }
     }
   });

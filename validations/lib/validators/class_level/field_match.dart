@@ -15,15 +15,15 @@ typedef _FieldMatchMessage = String Function(
 /// on the validated fields to prevent the validness of this state.
 class FieldMatchValidator<ValueType>
     extends ClassConstraintValidator<ValueType> {
-  final String baseField;
-  final String matchField;
+  final String? baseField;
+  final String? matchField;
   FieldMatchValidator({
     this.baseField,
     this.matchField,
   }) : super([baseField, matchField]);
   @override
-  bool isValid(PropertyMap<ValueType> value, ValueContext context) {
-    final baseValue = value[baseField];
+  bool isValid(PropertyMap<ValueType>? value, ValueContext context) {
+    final baseValue = value![baseField];
     final matchValue = value[matchField];
 
     final result =
@@ -34,12 +34,12 @@ class FieldMatchValidator<ValueType>
         ..addViolation(
           baseFieldMessage,
           [baseField, matchField, value],
-          context.getNode(baseField),
+          context.getNode(baseField!),
         )
         ..addViolation(
           matchFieldMessage,
           [baseField, matchField, value],
-          context.getNode(matchField),
+          context.getNode(matchField!),
         );
     }
 

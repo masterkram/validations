@@ -6,11 +6,11 @@ class TestValidator {
 
   TestValidator(this.validator);
 
-  void isValid(Iterable input, [String name]) {
+  void isValid(Iterable input, [String? name]) {
     _testValidator(input, true);
   }
 
-  void isInvalid(Iterable input, [String name]) {
+  void isInvalid(Iterable input, [String? name]) {
     _testValidator(input, false, name);
   }
 
@@ -23,7 +23,7 @@ class TestValidator {
     });
   }
 
-  void _testValidator<T>(Iterable input, bool expected, [String name]) {
+  void _testValidator<T>(Iterable input, bool expected, [String? name]) {
     t.test(name ?? validator.runtimeType, () {
       var index = 0;
       for (var data in input) {

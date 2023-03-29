@@ -7,7 +7,7 @@ part of validators.comparison;
 /// Note: this validator is identical to the [GreaterThanOrEqualValidator].
 class MinValidator extends GreaterThanOrEqualValidator {
   MinValidator({
-    @required num value,
+    required num value,
   })  : assert(value != null),
         super(value: value);
 

@@ -1,6 +1,5 @@
 library validators.string;
 
-import 'package:meta/meta.dart';
 import 'package:validators/validators.dart'
     show
         isAlpha,
